@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './css/main.css' %}">
+    <title>Project</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__container">
+                <ul class="header__list">
+                    <li class="header__item-heading"><img class="header_logo" src="{% static './img/logo.png' %}" alt="logo of this web page" width="40" height="40">Innoweek</li>
+                    <li class="header__item"><a href="#" class="header__item-link header__item-link--active"><img class="header__icon" src="{% static './img/project-icon.svg' %}" alt="the icon of project">{{ query.category_id }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <div class="hero__container">
+                    <div class="hero__top">
+                        <div class="hero__t-left">
+                            <a href="{% url 'index' %}" class="hero__t-link"></a>
+                            
+                            <h3 class="hero__t-heading">Projects</h3>
+                            
+                        </div>
+                        <button class="burger__btn"><img class="burger__img" src="{% static './img/burger.png' %}" alt="burger menu" width="30"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="about">
+            <div class="container">
+                <div class="about__container">
+                    <h2 class="about__heading">{{ query.name }}</h2>
+                    
+                    <div class="about__heading-text-wrapper">
+                        <p class="about__heading-type">{{ query.category_id }}</p>
+                        
+                        <p class="dot">.</p>
+                        
+                        <p class="about__heading-name">{{ query.person_id }}</p>
+                    </div>
+                    
+                    <img src="{{ query.image.url }}" alt="main img" class="about__main-img" width="935" height="500">
+                    
+                    <ul class="about__list-wrapper">
+                        <li class="about__item-wrapper">
+                            <ul class="about__inner-list">
+                                <li class="about__inner-item">
+                                    <div class="about__location">
+                                        <span class="location"><img class="location__img" src="{% static './img/location.svg' %}" alt=""></span>
+                                        
+                                        <p class="location__text">{{ query.region }} {{ query.district }}</p>
+                                    </div>
+                                </li>
+                                
+                                 <li class="about__inner-item">
+                                    <div class="about__tel">
+                                        <span class="tel"><img class="location__img" src="{% static './img/aim.svg' %}" alt=""></span>
+
+                                        <a class="tel__text" href="tel:+7 777 821-88-01">{{ query.project_aim }}</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="about__item-wrapper">
+                            <ul class="about__inner-list">
+                                <li class="about__inner-item">
+                                    <div class="about__location">
+                                        <span class="location"><img class="location__img" src="{% static './img/invention.svg' %}" alt=""></span>
+                                        
+                                        <p class="location__text">{{ query.innovastion_part }}</p>
+                                    </div>
+                                </li>
+                                
+                                <li class="about__inner-item">
+                                    <div class="about__tel">
+                                        <span class="tel"><img class="location__img" src="{% static './img/cash.svg' %}" alt=""></span>
+                                        
+                                        <a class="tel__text" href="tel:+7 777 821-88-01">{{ query.price }}</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <p class="about__main-text">{{ query.desription }}</p>
+                    
+                    
+                    <a href="{{ query.file.url }}" class="about__file"><img class="file__img" src="{% static './img/file.svg' %}" alt="svg of file">Project File</a>
+
+                    <div class="about__comment">
+
+                        {% for i in comment %}
+                        <img src="{% static './img/main-jpg.jpg' %}" alt="" class="about__comment-img" width="50" height="50">
+                        <div class="comment-wrapper">
+                            <p class="about__comment-text">{{ i.text }}</p>
+                                <a href="#" class="edit-comment"><img class="edit__img" src="{% static './img/edit.svg' %}" alt="edit" width="24" height="24"> Tahrirlash</a>
+                        </div>
+                        <div class="triangle-left"></div>
+                        {% endfor %}
+
+                    </div>
+                    <form class="write-comment-main" enctype="multipart/form-data" method="post"">
+                        {% csrf_token %}
+                        <textarea name="text" class="write__comment" id="commentWrite" placeholder="Fikr qoldiring..."></textarea>
+
+                        <a href="{% url 'about' pk=query.id %}"><button type='submit' class="write-btn">Submit</button></a>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
