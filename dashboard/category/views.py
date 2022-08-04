@@ -6,13 +6,13 @@ from blog.models import Category
 def ctg_list_detail_delete(requests, pk=None, delete=None):
     ctx = {}
     if pk:
-        html = 'dashboard/category/details.html'
+        html = 'admin/category/details.html'
         ctx['ctg'] = Category.objects.get(pk=pk)
     elif delete:
         Category.objects.get(pk=delete).delete()
         return redirect('ctg_list')
     else:
-        html = 'dashboard/category/list.html'
+        html = 'admin/category/list.html'
         ctx['ctg'] = Category.objects.all().order_by('-pk')
     return render(requests, html, ctx)
 
@@ -32,11 +32,11 @@ def ctg_add_edit(requests, pk=None):
     ctx = {
         'form': form
     }
-    return render(requests, 'dashboard/category/forms.html', ctx)
+    return render(requests, 'admin/category/forms.html', ctx)
 
 
 def ctg_search(requests):
     if requests.method == 'POST':
         search = requests.POST['search']
         ctg = Category.objects.filter(name__contains=search)
-        return render(requests, 'dashboard/category/list.html', {'search': search, 'ctg': ctg})
+        return render(requests, 'admin/category/list.html', {'search': search, 'ctg': ctg})

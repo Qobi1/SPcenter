@@ -7,13 +7,13 @@ from blog.models import Person
 def person_list_detail_delete(requests, pk=None, delete=None):
     ctx = {}
     if pk:
-        html = 'dashboard/person/details.html'
+        html = 'admin/person/details.html'
         ctx['person'] = Person.objects.get(pk=pk)
     elif delete:
         Person.objects.get(pk=delete).delete()
         return redirect('person_list')
     else:
-        html = 'dashboard/person/list.html'
+        html = 'admin/person/list.html'
         ctx['person'] = Person.objects.all().order_by('-pk')
     return render(requests, html, ctx)
 
@@ -34,7 +34,7 @@ def person_add_edit(requests, pk=None):
     ctx = {
         'form': form
     }
-    return render(requests, 'dashboard/person/forms.html', ctx)
+    return render(requests, 'admin/person/forms.html', ctx)
 
 
 # function to search a particular input
@@ -42,4 +42,4 @@ def person_search(requests):
     if requests.method == 'POST':
         search = requests.POST['search']
         person = Person.objects.filter(first_name__contains=search)
-        return render(requests, 'dashboard/person/list.html', {'search': search, 'person': person})
+        return render(requests, 'admin/person/list.html', {'search': search, 'person': person})

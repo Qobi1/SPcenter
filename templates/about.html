@@ -97,23 +97,29 @@
                     <p class="about__main-text">{{ query.desription }}</p>
                     
                     
-                    <a href="{{ query.file.url }}" class="about__file"><img class="file__img" src="{% static './img/file.svg' %}" alt="svg of file">Project File</a>
+                    <a href="{{ query.file.url }}" class="about__file"><img class="file__img" src="{% static './img/file.svg' %}" alt="svg of file">{{ query.file }}</a>
 
+                    {% for i in comment %}
                     <div class="about__comment">
-
-                        {% for i in comment %}
+                    <div class="about__main-wrapper-comment">
                         <img src="{% static './img/main-jpg.jpg' %}" alt="" class="about__comment-img" width="50" height="50">
+
                         <div class="comment-wrapper">
                             <p class="about__comment-text">{{ i.text }}</p>
-                                <a href="#" class="edit-comment"><img class="edit__img" src="{% static './img/edit.svg' %}" alt="edit" width="24" height="24"> Tahrirlash</a>
-                        </div>
-                        <div class="triangle-left"></div>
-                        {% endfor %}
 
+
+<!--                            <a href="#" class="edit-comment"><img class="edit__img" src="./img/edit.svg" alt="edit" width="24" height="24"> Tahrirlash</a>-->
+
+                            <div class="triangle-left"></div>
+                        </div>
                     </div>
-                    <form class="write-comment-main" enctype="multipart/form-data" method="post"">
+                    </div>
+                    {% endfor %}
+
+
+                    <form class="write-comment-main" enctype="multipart/form-data" method="post">
                         {% csrf_token %}
-                        <textarea name="text" class="write__comment" id="commentWrite" placeholder="Fikr qoldiring..."></textarea>
+                        <textarea name="text" class="write__comment" id="commentWrite" placeholder="Fikr qoldiring..." required></textarea>
 
                         <a href="{% url 'about' pk=query.id %}"><button type='submit' class="write-btn">Submit</button></a>
                     </form>

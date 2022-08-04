@@ -12,11 +12,11 @@ class ProjectForm(forms.ModelForm):
     desription = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control", 'style': 'max-width: 32em; border-color: black'}))
     file = forms.FileField(widget=forms.ClearableFileInput(attrs={'class': "form-control", 'style': 'max-width: 32em; border-color: black'}))
     innovastion_part = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control", 'style': 'max-width: 32em; border-color: black'}))
-    # region = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control", 'style': 'max-width: 32em; border-color: black'}))
-    # location = forms.CharField(widget=forms.Select(attrs={'class': "form-control", 'style': 'max-width: 32em; border-color: black'}))
+    region = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control", 'style': 'max-width: 32em; border-color: black'}))
+    district = forms.CharField(widget=forms.Textarea(attrs={'class': "form-control", 'style': 'max-width: 32em; border-color: black'}))
 
     class Meta:
         model = Project
-        fields = ('name', 'image', 'price', 'category_id', 'person_id', 'project_aim', 'desription', 'file', 'innovastion_part', 'region')
+        fields = ('name', 'image', 'price', 'category_id', 'person_id', 'project_aim', 'desription', 'file', 'innovastion_part', 'region', 'district')
 
 

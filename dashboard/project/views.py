@@ -8,13 +8,13 @@ from blog.models import Project
 def project_list_detail_delete(requests, pk=None, delete=None):
     ctx = {}
     if pk:
-        html = 'dashboard/project/details.html'
+        html = 'admin/project/details.html'
         ctx['project'] = Project.objects.get(pk=pk)
     elif delete:
         Project.objects.get(pk=delete).delete()
         return redirect('project_list')
     else:
-        html = 'dashboard/project/list.html'
+        html = 'admin/project/list.html'
         ctx['project'] = Project.objects.all().order_by('-pk')
     return render(requests, html, ctx)
 
@@ -35,7 +35,7 @@ def project_add_edit(requests, pk=None):
     ctx = {
         'form': form
     }
-    return render(requests, 'dashboard/project/forms.html', ctx)
+    return render(requests, 'admin/project/forms.html', ctx)
 
 
 # Search function
@@ -43,4 +43,4 @@ def search(requests):
     if requests.method == 'POST':
         search = requests.POST['search']
         project = Project.objects.filter(name__contains=search)
-        return render(requests, 'dashboard/project/list.html', {'search': search, 'project': project})
+        return render(requests, 'admin/project/list.html', {'search': search, 'project': project})

@@ -50,14 +50,14 @@
 		-->
 			<div class="logo">
 				<a href="#" class="simple-text logo-mini">
-					CT
+					AP
 				</a>
 
 				<a href="#" class="simple-text logo-normal">
 					Admin Panel
 				</a>
 			</div>
-	    	<div class="sidebar-wrapper">
+	    	<div class="sidebar-wrapper" style="height: 100%">
 <!--				<div class="user">-->
 <!--	                <div class="photo">-->
 <!--	                    <img src="{% static 'dashboard/assets/img/faces/face-2.jpg' %}" />-->
@@ -99,7 +99,7 @@
 					<li>
 	                    <a data-toggle="collapse" href="#dashboardOverview">
 	                        <i class="ti-panel"></i>
-	                        <p>Collapse
+	                        <p>OPTIONS
                                 <b class="caret"></b>
                             </p>
 	                    </a>
@@ -127,6 +127,8 @@
 						</div>
 	                </li>
 	            </ul>
+
+				<a href="{% url 'logout' %}"><button style="width: 100%; padding: 10px;">Log Out</button></a>
 	    	</div>
 	    </div>
 
@@ -147,6 +149,7 @@
 	                </div>
 	            </div>
 	        </nav>
+
 
 	        <div class="content">
 	            <div class="container-fluid">
@@ -248,4 +251,18 @@
 	<!-- Paper Dashboard PRO DEMO methods, don't include it in your project! -->
 	<script src="{% static 'dashboard/assets/js/demo.js' %}"></script>
 
+	<script>
+// 		var elBtn = document.querySelector("#alert");
+//
+// elBtn.addEventListener("click", function evt(){
+//     alert("Deleted");
+// })
+function confirm_category_delete(pk){
+    var r = confirm("Ushbu kategoriyani o'chirmoqchimisiz?");
+    if (r == true) {
+        window.location.href="/administration/admin/category-delete/"+ pk +""
+    }
+}
+
+	</script>
 </html>

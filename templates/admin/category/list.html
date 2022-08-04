@@ -1,15 +1,14 @@
-{% extends 'dashboard/admin-index.html' %}
+{% extends 'admin/admin-index.html' %}
 {% load static %}
 {% block content %}
-
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Person Table</h4>
+            <h4 class="card-title">Category Table</h4>
             <div class="text-right">
-                <form class="navbar-form navbar-left navbar-search-form" role="search" method="post" action="{% url 'person_search' %}">
+                <form class="navbar-form navbar-left navbar-search-form" role="search" method="post" action="{% url 'ctg_search' %}">
                     {% if search %}
-                        <a href="{% url 'person_list' %}"><button type="button" class="btn btn-wd btn-default btn-fill btn-move-left">
+                        <a href="{% url 'ctg_list' %}"><button type="button" class="btn btn-wd btn-default btn-fill btn-move-left">
                             <span class="btn-label">
                                 <i class="ti-angle-left"></i>
                             </span>
@@ -29,7 +28,7 @@
                         </button>
                     {% endif %}
                 </form>
-                <a href="{% url 'person_add' %}"><button class="btn text-success btn-fill btn-wd">Add Person</button></a>
+                <a href="{% url 'ctg_add' %}"><button class="btn text-success btn-fill btn-wd">Add Category</button></a>
             </div>
 
         </div>
@@ -38,27 +37,24 @@
                 <thead>
                     <tr>
                         <th class="text-center">#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Address</th>
+                        <th>Name</th>
+
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for i in person %}
+                    {% for i in ctg %}
                     <tr>
                         <td class="text-center">{{ forloop.counter }}</td>
-                        <td>{{ i.first_name }}</td>
-                        <td>{{ i.last_name }}</td>
-                        <td>{{ i.address }}</td>
+                        <td>{{ i.name }}</td>
                         <td class="td-actions text-right">
-                            <a href="{% url 'person_detail' pk=i.id %}" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                            <a href="{% url 'ctg_detail' pk=i.id %}" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
                                 <i class="ti-user"></i>
                             </a>
-                            <a href="{% url 'person_edit' pk=i.id %}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+                            <a href="{% url 'ctg_edit' pk=i.id %}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
                                 <i class="ti-pencil-alt"></i>
                             </a>
-                            <a href="{% url 'person_delete' delete=i.id %}" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                            <a href="{% url 'ctg_delete' delete=i.id %}" id="alert" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
                                 <i class="ti-close"></i>
                             </a>
                         </td>

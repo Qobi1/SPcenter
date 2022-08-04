@@ -7,5 +7,4 @@ urlpatterns = [
     path('projects/<int:pk>/', projects, name='projects'),
     path('search-ctg/', index_search, name='index_search'),
     path('search/', projects_search, name='project_searching'),
-    # path('comment/', comment, name='comment')
 ]

@@ -1,4 +1,8 @@
+from contextlib import closing
+
+from django.db import connection
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from .models import *
 # Create your views here.
 
@@ -16,6 +20,7 @@ def about(requests, pk):
         comm.text = requests.POST.get('text', '')
         comm.project = query
         comm.save()
+        # return render(requests, 'about.html')
         return redirect('index')
     comment = Comments.objects.filter(project_id=pk)
     return render(requests, 'about.html', {'query': query, 'comment': comment})
@@ -39,6 +44,6 @@ def index_search(requests):
 def projects_search(requests):
     if requests.method == 'POST':
         search = requests.POST['search']
-        project = Project.objects.filter(name__contains=search)
+        print(search)
+        project = Project.objects.filter(name__icontains=search)
         return render(requests, 'projects.html', {'query': project, 'search': search})
-
