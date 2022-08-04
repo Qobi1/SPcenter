@@ -251,18 +251,5 @@
 	<!-- Paper Dashboard PRO DEMO methods, don't include it in your project! -->
 	<script src="{% static 'dashboard/assets/js/demo.js' %}"></script>
 
-	<script>
-// 		var elBtn = document.querySelector("#alert");
-//
-// elBtn.addEventListener("click", function evt(){
-//     alert("Deleted");
-// })
-function confirm_category_delete(pk){
-    var r = confirm("Ushbu kategoriyani o'chirmoqchimisiz?");
-    if (r == true) {
-        window.location.href="/administration/admin/category-delete/"+ pk +""
-    }
-}
-
-	</script>
+	<script src="{% static 'dashboard/assets/js/main.js' %}"></script>
 </html>

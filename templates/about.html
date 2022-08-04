@@ -13,7 +13,11 @@
         <div class="container">
             <div class="header__container">
                 <ul class="header__list">
-                    <li class="header__item-heading"><img class="header_logo" src="{% static './img/logo.png' %}" alt="logo of this web page" width="40" height="40">Innoweek</li>
+                    <li class="header__item-heading"><img class="header_logo" src="{% static './img/logo.png' %}" alt="logo of this web page" width="40" height="40">Innoweek
+
+                                        <button class="burger-close"><img class="burger__img" src="{% static './img/burger.png' %}" alt="burger menu" width="30"></button>
+
+                    </li>
                     <li class="header__item"><a href="#" class="header__item-link header__item-link--active"><img class="header__icon" src="{% static './img/project-icon.svg' %}" alt="the icon of project">{{ query.category_id }}</a></li>
                 </ul>
             </div>
@@ -67,7 +71,7 @@
                                     <div class="about__tel">
                                         <span class="tel"><img class="location__img" src="{% static './img/aim.svg' %}" alt=""></span>
 
-                                        <a class="tel__text" href="tel:+7 777 821-88-01">{{ query.project_aim }}</a>
+                                        <p class="tel__text">{{ query.project_aim }}</p>
                                     </div>
                                 </li>
                             </ul>
@@ -87,7 +91,7 @@
                                     <div class="about__tel">
                                         <span class="tel"><img class="location__img" src="{% static './img/cash.svg' %}" alt=""></span>
                                         
-                                        <a class="tel__text" href="tel:+7 777 821-88-01">{{ query.price }}</a>
+                                        <p class="tel__text">{{ query.price }}</p>
                                     </div>
                                 </li>
                             </ul>
@@ -127,5 +131,7 @@
             </div>
         </section>
     </main>
+
+<script src="{% static 'dashboard/assets/js/main.js' %}"></script>
 </body>
 </html>

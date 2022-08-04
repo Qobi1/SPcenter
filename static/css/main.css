@@ -92,6 +92,9 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -175,11 +178,17 @@ main {
   .header__container {
     display: none;
   }
+
+
 }
 
 @media only screen and (max-width: 1275px) {
   .header__container {
     display: none;
+  }
+
+  .header-toggle {
+    display: block;
   }
 }
 
@@ -695,16 +704,17 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   margin-right: 15px;
   border-radius: 50%;
-  background-color: #5885EA;
+  background-color: #FFFFFF;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   background-position: center;
 }
 
 .about__list-wrapper .about__item-wrapper .about__inner-list .about__inner-item .about__location .location .location__img {
-  padding: 12px;
+  padding: 40px;
 }
 
 .about__list-wrapper .about__item-wrapper .about__inner-list .about__inner-item .about__location .location__text {
@@ -740,16 +750,17 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   margin-right: 15px;
   border-radius: 50%;
-  background-color: #5885EA;
+  background-color: #FFFFFF;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   background-position: center;
 }
 
 .about__list-wrapper .about__item-wrapper .about__inner-list .about__inner-item .about__tel .tel .location__img {
-  padding: 12px;
+  padding: 20px;
 }
 
 .about__list-wrapper .about__item-wrapper .about__inner-list .about__inner-item .about__tel .tel__text {
@@ -1150,5 +1161,19 @@ main {
   .about {
     margin-right: 0;
   }
+}
+
+.burger-close {
+    display: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1275px) {
+  .burger-close {
+    display: unset;
+}
 }
 /*# sourceMappingURL=main.css.map */
